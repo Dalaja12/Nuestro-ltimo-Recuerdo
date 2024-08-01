@@ -1,0 +1,135 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto', sans-serif; /* Fuente atractiva */
+}
+
+p {
+	margin-top: 10px;
+	font-size: 13px;
+	text-align: center; /* Centrar el texto */
+}
+
+.container, .book-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column; /* Organizar el contenido verticalmente */
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+	background: black; /* Fondo negro */
+	background: radial-gradient(2px 2px at 20px 20px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 60px 60px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 100px 100px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 140px 140px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 180px 180px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 220px 220px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 260px 260px, #fff, transparent) 0 0, 
+	            radial-gradient(2px 2px at 300px 300px, #fff, transparent) 0 0;
+	background-size: 400px 400px;
+	background-color: black;
+}
+
+.header {
+	margin-bottom: 20px; /* Espacio entre el texto y el libro */
+	color: white; /* Color blanco para el texto */
+	font-size: 24px;
+	text-align: center;
+	width: 100%; /* Asegura que el texto se centre en todo el ancho del contenedor */
+}
+
+.book-content {
+	width: 65%;
+	min-width: 250px;
+	max-width: 400px;
+	height: 330px;
+	position: relative;
+	perspective: 1000px;
+	transition: 1s;
+}
+
+.book {
+	position: absolute;
+	width: 65%;
+	height: 100%;
+	transition: 1s;
+	transform-style: preserve-3d;
+	transform-origin: left;
+}
+
+.face-front, .face-back {
+	width: 100%;
+	height: 100%;
+	background: white;
+	padding: 15px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column; /* Organizar el contenido verticalmente */
+	justify-content: space-between; /* Espacio entre el texto y la imagen o video */
+	text-align: center; /* Centrar el texto en el interior de la cara del libro */
+}
+
+.face-front {
+	box-shadow: inset 3px 0px 20px -7px black;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.face-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateZ(-1px) rotateY(180deg);
+	box-shadow: inset -3px 1px 20px -7px black;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+#portada {
+	background: url('../img/bookPortada.jpg');
+}
+
+#portada-back {
+	background: url('../img/portadaBack.jpg');
+}
+
+#portada, #portada-back {
+	background-size: 100% 100%;
+}
+
+/* Clases que se agregaran con Javascript */
+.trnsf {
+	transform: translateX(80px);
+}
+
+.trnsf-reset {
+	transform: translateX(0px);
+}
+
+/* Estilos para las imágenes dentro del libro */
+.book .face-front img,
+.book .face-back img {
+	width: auto; /* Mantener la proporción de la imagen */
+	height: 100px; /* Ajustar la altura de la imagen */
+	object-fit: contain; /* Mantener la proporción sin recortar */
+	margin-top: 10px; /* Espacio entre el texto y la imagen */
+}
+
+/* Estilos para el video dentro del libro en la página 6 */
+.book .face-front iframe {
+	width: 100%; /* Ancho completo del contenedor */
+	height: 200px; /* Ajustar la altura del video */
+	object-fit: cover; /* Ajustar el video sin recortar */
+	margin-top: 10px; /* Espacio entre el texto y el video */
+}
+
+/* @media para hacer el texto responsivo */
+@media screen and (max-width: 800px) {
+	p {
+		font-size: 12px;
+	}
+}
